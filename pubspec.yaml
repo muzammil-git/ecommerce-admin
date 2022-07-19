@@ -39,7 +39,8 @@ dependencies:
   cloud_firestore: ^3.3.0
   firebase_storage: ^10.3.2
   flutterfire_ui: ^0.4.2+3
-
+  flutter_riverpod: ^1.0.3
+  google_sign_in: ^5.4.0
 
   
 
