@@ -1,5 +1,6 @@
 import 'package:ecommerce/app/auth_widget.dart';
-import 'package:ecommerce/app/pages/auth/sign_in_page.dart';
+import 'package:ecommerce/app/pages/admin_home.dart';
+import 'package:ecommerce/app/pages/sign_in_page.dart';
 import 'package:ecommerce/app/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,6 +25,11 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          primary: Colors.orange,
+          seedColor: Colors.orange,
+          
+        ),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
@@ -58,6 +64,7 @@ class MyApp extends ConsumerWidget {
           ),
         ),
         nonSignedInBuilder: (context) => const SignInPage(),
+        adminSignedInBuilder:(context) => const AdminHome(),
         ),
         
       );

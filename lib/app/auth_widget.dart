@@ -9,11 +9,15 @@ class AuthWidget extends ConsumerWidget {
   const AuthWidget({
     Key? key,
     required this.nonSignedInBuilder,
-    required this.signedInBuilder
+    required this.signedInBuilder,
+    required this.adminSignedInBuilder
   }) : super(key: key);
 
   final WidgetBuilder nonSignedInBuilder;
   final WidgetBuilder signedInBuilder;
+  final WidgetBuilder adminSignedInBuilder;
+
+  final adminEmail = "muzammil.ali@apprays.io";
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,7 +25,11 @@ class AuthWidget extends ConsumerWidget {
     
     return authChanges.when(
       data: (user){
-        return user != null ? signedInBuilder(context) : nonSignedInBuilder(context);
+        return user != null 
+          ? user.email == adminEmail 
+            ? adminSignedInBuilder(context)
+            : signedInBuilder(context)
+          : nonSignedInBuilder(context);
       }, 
       loading: (){
         return const Scaffold(
